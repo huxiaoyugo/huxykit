@@ -48,7 +48,7 @@ func (c Cycle) DurationSec() int64 {
 	case CycleDay:
 		return 86400
 	case CycleMin:
-		return 60
+		return 60*50
 	default:
 		// 默认返回一个小时
 		return 3600
@@ -182,15 +182,7 @@ func (f *FileWriter) openFile(fileName string) (*os.File, error) {
 		file += "/"
 	}
 	file += fileName
-	fn, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
-	if err != nil {
-		return fn, err
-	}
-	err = fn.Chmod(0666)
-	if err != nil {
-		return nil, err
-	}
-	return fn, nil
+	return os.OpenFile(file, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
 }
 
 // 关闭file和fileWf
@@ -241,7 +233,7 @@ func (f *FileWriter) rename(rotateIndex string) error {
 // 创建logPath的文件夹
 func (f *FileWriter) createLogPath() error {
 	if !utils.FileExist(f.logPath) {
-		err := os.Mkdir(f.logPath, 0777)
+		err := os.MkdirAll(f.logPath, 0777)
 		if err != nil {
 			return err
 		}
