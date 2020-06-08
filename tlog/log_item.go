@@ -12,7 +12,7 @@ type logMsg struct {
 
 func(l *logMsg) ToBytes() []byte {
 	b := bytes.Buffer{}
-	b.WriteString(fmt.Sprintf("[%s] %s", l.level.String(), fmt.Sprint(l.msg...)))
+	b.WriteString(fmt.Sprintf("[%s] %s\n", l.level.String(), fmt.Sprint(l.msg...)))
 	return b.Bytes()
 }
 

@@ -6,6 +6,10 @@ import (
 )
 
 const (
+	// 日志输出chan的buffer长度
+	chanBufferLen = 200
+)
+const (
 	logLevelDebug LogLevel = iota
 	logLevelInfo
 	logLevelWarn
@@ -40,66 +44,44 @@ type Logger interface {
 	Fatal(msg ...interface{})
 }
 
-const (
-	// 日志输出chan的buffer长度
-	chanBufferLen = 200
-	// 默认切分周期
-	defaultRotateCycle = CycleHalfHour
-
-	// 默认日志路径
-	defaultLogPath = "./log"
-)
-
-const (
-	CycleHalfHour Cycle = iota
-	CycleHour
-	CycleDay
-	CycleWeek
-)
-
-// 周期类型
-type Cycle int
-
 type tLog struct {
 	io.Writer
 	// 日志输出级别
 	level LogLevel
-	// 是否需要确切分日志文件
-	rotateSwitch bool
-	// 切分周期
-	rotateCycle Cycle
-	// 文件路径
-	logPath string
-	//
+
 	// 存放日志信息的chan
 	buffer chan LogItem
 }
 
+func NewDefaultLogger(level LogLevel) Logger {
+	return NewLogger(DefaultFileWriter(), level)
+}
+
 func NewLogger(writer io.Writer, level LogLevel) Logger {
 	logger := &tLog{
-		Writer:       writer,
-		level:        level,
-		rotateSwitch: true,
-		rotateCycle:  defaultRotateCycle,
-		logPath:      defaultLogPath,
-		buffer:       make(chan LogItem, chanBufferLen),
+		Writer: writer,
+		level:  level,
+		buffer: make(chan LogItem, chanBufferLen),
 	}
 	// 开始日志收集
 	logger.Start()
 	return logger
 }
 
-func(t *tLog) Start() {
+func (t *tLog) Start() {
 	go func() {
 		defer func() {
 			if err := recover(); err != nil {
-				 fmt.Println(err)
+				fmt.Println(err)
 			}
 		}()
 		for {
 			select {
 			case logItem := <-t.buffer:
-				_, _ = t.Writer.Write(logItem.ToBytes())
+				_, err := t.Writer.Write(logItem.ToBytes())
+				if err != nil {
+					fmt.Println(err)
+				}
 			}
 		}
 	}()
