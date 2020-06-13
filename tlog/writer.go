@@ -48,7 +48,7 @@ func (c Cycle) DurationSec() int64 {
 	case CycleDay:
 		return 86400
 	case CycleMin:
-		return 60*50
+		return 60
 	default:
 		// 默认返回一个小时
 		return 3600
@@ -100,7 +100,7 @@ type FileWriterConfig struct {
 
 func DefaultFileWriter() *FileWriter {
 	config := FileWriterConfig{
-		RotateSwitch: true,
+		RotateSwitch: false,
 		RotateCycle:  defaultRotateCycle,
 		Path:         defaultLogPath,
 		LogName:      defaultLogName,
@@ -165,12 +165,17 @@ func (f *FileWriter) setLogFile() error {
 	// 修改当前的index
 	f.curRotateIndex = ri
 
-	// 重新打开
-	if f.file, err = f.openFile(f.logName); err != nil {
-		return err
+	if f.file == nil || !f.rotateSwitch {
+		// 重新打开wf
+		if f.file, err = f.openFile(f.logName); err != nil {
+			return err
+		}
 	}
-	if f.fileWf, err = f.openFile(f.logName + suffix); err != nil {
-		return err
+
+	if f.fileWf == nil || !f.rotateSwitch {
+		if f.fileWf, err = f.openFile(f.logName + suffix); err != nil {
+			return err
+		}
 	}
 	return nil
 }
@@ -201,6 +206,11 @@ func (f *FileWriter) closeFile() {
 // 将app.log ==> app.log.2020010201
 // 将app.log.wf ==> app.log.wf.2020010201
 func (f *FileWriter) rename(rotateIndex string) error {
+
+	// 如果没有开启日志分割直接返回
+	if !f.rotateSwitch {
+		return nil
+	}
 	rotateIndex = strings.Trim(rotateIndex, " ")
 	if rotateIndex == "" {
 		return nil

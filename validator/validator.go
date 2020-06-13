@@ -35,7 +35,7 @@ func NewValidator(rules ...rule.Rule) *Validator {
 /*
 * IsValid check the target is valid
 *
-* PARAMS: t
+* PARAMS:
 * target: object need be checked, must be struct or struct pointer
 *
 * RETURN:
