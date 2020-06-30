@@ -2,8 +2,8 @@ package scanner
 
 import (
 	"fmt"
-	"icode.baidu.com/baidu/duer/protocol-gen/hipl/err"
-	"icode.baidu.com/baidu/duer/protocol-gen/hipl/token"
+	"github.com/huxiaoyugo/huxykit/hipl/err"
+	"github.com/huxiaoyugo/huxykit/hipl/token"
 	"unicode"
 	"unicode/utf8"
 )

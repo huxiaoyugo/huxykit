@@ -1,8 +1,8 @@
 package ast
 
 import (
-	"icode.baidu.com/baidu/duer/protocol-gen/hipl/scanner"
-	"icode.baidu.com/baidu/duer/protocol-gen/hipl/token"
+	"github.com/huxiaoyugo/huxykit/hipl/scanner"
+	"github.com/huxiaoyugo/huxykit/hipl/token"
 	"strings"
 )
 

@@ -1,6 +1,6 @@
 package ast
 
-import "icode.baidu.com/baidu/duer/protocol-gen/hipl/scanner"
+import "github.com/huxiaoyugo/huxykit/hipl/scanner"
 
 type Struct struct {
 	Tok    *scanner.TokenInfo

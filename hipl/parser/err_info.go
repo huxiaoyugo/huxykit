@@ -1,6 +1,6 @@
 package parser
 
-import "icode.baidu.com/baidu/duer/protocol-gen/hipl/err"
+import "github.com/huxiaoyugo/huxykit/hipl/err"
 
 func (p *Parser) errExpect(msg string) {
 	if p.curToken != nil {

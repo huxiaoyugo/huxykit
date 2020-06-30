@@ -2,7 +2,7 @@ package scanner
 
 import (
 	"fmt"
-	"icode.baidu.com/baidu/duer/protocol-gen/hipl/token"
+	"github.com/huxiaoyugo/huxykit/hipl/token"
 	"testing"
 	"time"
 )

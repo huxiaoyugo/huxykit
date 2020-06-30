@@ -1,7 +1,7 @@
 package ast
 
 import (
-	"icode.baidu.com/baidu/duer/protocol-gen/hipl/scanner"
+	"github.com/huxiaoyugo/huxykit/hipl/scanner"
 	"regexp"
 )
 

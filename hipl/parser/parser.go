@@ -2,10 +2,10 @@ package parser
 
 import (
 	"fmt"
-	"icode.baidu.com/baidu/duer/protocol-gen/hipl/ast"
-	"icode.baidu.com/baidu/duer/protocol-gen/hipl/err"
-	"icode.baidu.com/baidu/duer/protocol-gen/hipl/scanner"
-	"icode.baidu.com/baidu/duer/protocol-gen/hipl/token"
+	"github.com/huxiaoyugo/huxykit/hipl/ast"
+	"github.com/huxiaoyugo/huxykit/hipl/err"
+	"github.com/huxiaoyugo/huxykit/hipl/scanner"
+	"github.com/huxiaoyugo/huxykit/hipl/token"
 	"io/ioutil"
 	"strconv"
 	"strings"
