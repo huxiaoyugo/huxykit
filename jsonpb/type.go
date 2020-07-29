@@ -241,7 +241,7 @@ type OneOf struct {
 func (b OneOf) ToString(writer io.Writer, lastField bool) {
 	buf := &bytes.Buffer{}
 
-	v := reflect.ValueOf(b.Val)
+	v := reflect.Indirect(reflect.ValueOf(b.Val))
 	NewInterface("", v.Field(0).Interface(), b.Opts).ToString(buf, true)
 	data := buf.Bytes()
 
