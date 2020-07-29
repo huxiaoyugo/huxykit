@@ -240,8 +240,11 @@ type OneOf struct {
 
 func (b OneOf) ToString(writer io.Writer, lastField bool) {
 	buf := &bytes.Buffer{}
-	NewInterface("", b.Val, b.Opts).ToString(buf, true)
+
+	v := reflect.ValueOf(b.Val)
+	NewInterface("", v.Field(0).Interface(), b.Opts).ToString(buf, true)
 	data := buf.Bytes()
+
 	// 去掉{}
 	if len(data) >= 2 {
 		data = data[1 : len(data)-1]
