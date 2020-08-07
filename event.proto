@@ -1,0 +1,976 @@
+syntax = "proto3";
+
+package appserver.gateway.downstream;
+
+option go_package = "appserver/gateway/downstream/types";
+
+import "google/protobuf/wrappers.proto";
+
+message AccountBindDeviceAndBindCircle {
+    google.protobuf.StringValue clientId = 1;
+    google.protobuf.StringValue cuid = 2;
+}
+
+message AccountChangeUserProfile {
+    google.protobuf.StringValue displayName = 1;
+    google.protobuf.StringValue avatar = 2;
+    google.protobuf.Int64Value birthday = 3;
+}
+
+message AccountChangeUserProfilePic {
+    google.protobuf.StringValue avatar = 1;
+}
+
+message AccountGetCircleInfoBySn {
+    google.protobuf.UInt64Value dumiId = 1;
+    google.protobuf.StringValue clientId = 2;
+    google.protobuf.StringValue cuid = 3;
+}
+
+message AccountGetDeviceInfoByPhone {
+    google.protobuf.StringValue phone = 1;
+}
+
+message AccountGetDeviceInfoBySn {
+    google.protobuf.UInt64Value dumiId = 1;
+    google.protobuf.StringValue clientId = 2;
+    google.protobuf.StringValue cuid = 3;
+}
+
+message AccountGetDeviceInfoByUid {
+    google.protobuf.StringValue uid = 1;
+}
+
+message AccountGetPhoneByUid {
+    google.protobuf.StringValue uid = 1;
+}
+
+message AccountGetUidByPhone {
+    google.protobuf.StringValue phone = 1;
+}
+
+message AccountMergeList {
+    repeated google.protobuf.StringValue supportedClientIds = 1;
+}
+
+message AccountUnbindDevice {
+    google.protobuf.StringValue clientId = 1;
+    google.protobuf.StringValue cuid = 2;
+    google.protobuf.UInt64Value userDeviceId = 3;
+    google.protobuf.StringValue stoken = 4;
+    google.protobuf.StringValue deviceBduss = 5;
+}
+
+message AndroidPermissionsPermissionsStatus {
+    repeated AndroidPermissionsPermissionsStatusPermissions permissions = 1;
+}
+
+message AndroidPermissionsPermissionsStatusPermissions {
+    google.protobuf.StringValue name = 1;
+    google.protobuf.BoolValue enabled = 2;
+}
+
+message AppCoreVoiceAndVideoCall {
+    google.protobuf.StringValue callMode = 1;
+}
+
+message AppFeedResourceRendered {
+    google.protobuf.StringValue eventType = 1;
+    google.protobuf.StringValue eventTarget = 2;
+    google.protobuf.StringValue tabName = 3;
+    google.protobuf.StringValue resourceNamespace = 4;
+    google.protobuf.StringValue resourceName = 5;
+    google.protobuf.StringValue templateName = 6;
+    google.protobuf.StringValue resourceType = 7;
+}
+
+message AppPlayerAdjustvolumeClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerCommentClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerControlLyricHintClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerControlNextClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerControlPlayModeClicked {
+    google.protobuf.StringValue playModeType = 1;
+    google.protobuf.StringValue sourceType = 2;
+}
+
+message AppPlayerControlPlayPauseClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerControlPreviousClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerControlProgressBarClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerControlSpeedModeClicked {
+    google.protobuf.StringValue value = 1;
+    google.protobuf.StringValue sourceType = 2;
+}
+
+message AppPlayerDanmuClicked {
+    google.protobuf.StringValue eventTarget = 1;
+    google.protobuf.StringValue sourceType = 2;
+}
+
+message AppPlayerFavoriteClicked {
+    google.protobuf.StringValue type = 1;
+    google.protobuf.StringValue sourceType = 2;
+}
+
+message AppPlayerLyricDisplayed {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerMoreCollectionClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerMoreInfoClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerMoreRecentlyPlayClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerMoreSetRingClicked {
+    google.protobuf.StringValue type = 1;
+    google.protobuf.StringValue audioItemId = 2;
+    google.protobuf.StringValue sourceType = 3;
+}
+
+message AppPlayerMoreTimingPlayClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerMoreViewSingerClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerMoreViewSingerSingerClicked {
+    google.protobuf.StringValue singerName = 1;
+    google.protobuf.StringValue sourceType = 2;
+}
+
+message AppPlayerMusicTagsClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerPlayAudioClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerPlayListClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerPlayListSongClicked {
+    google.protobuf.StringValue audioItemId = 1;
+    google.protobuf.StringValue sourceType = 2;
+}
+
+message AppPlayerPlayerDisplayed {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerPlayerbackClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerRecommendAlbumClicked {
+    google.protobuf.StringValue eventTarget = 1;
+    google.protobuf.StringValue tabName = 2;
+    google.protobuf.StringValue templateId = 3;
+    google.protobuf.StringValue sourceType = 4;
+}
+
+message AppPlayerRecommendAlbumDislayed {
+    google.protobuf.StringValue tabName = 1;
+    google.protobuf.StringValue templateId = 2;
+    google.protobuf.StringValue sourceType = 3;
+}
+
+message AppPlayerRecommendSingleClicked {
+    google.protobuf.StringValue eventTarget = 1;
+    google.protobuf.StringValue tabName = 2;
+    google.protobuf.StringValue templateId = 3;
+    google.protobuf.StringValue sourceType = 4;
+}
+
+message AppPlayerRecommendSingleDisplayed {
+    google.protobuf.StringValue tabName = 1;
+    google.protobuf.StringValue templateId = 2;
+    google.protobuf.StringValue sourceType = 3;
+}
+
+message AppPlayerRecommendSongListClicked {
+    google.protobuf.StringValue eventTarget = 1;
+    google.protobuf.StringValue tabName = 2;
+    google.protobuf.StringValue templateId = 3;
+    google.protobuf.StringValue sourceType = 4;
+}
+
+message AppPlayerRecommendSongListDisplayed {
+    google.protobuf.StringValue tabName = 1;
+    google.protobuf.StringValue templateId = 2;
+    google.protobuf.StringValue sourceType = 3;
+}
+
+message AppPlayerSwitchDeviceClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppPlayerWatchVideoClicked {
+    google.protobuf.StringValue sourceType = 1;
+}
+
+message AppserverAppHomeCardClicked {
+    google.protobuf.StringValue name = 1;
+    google.protobuf.StringValue link = 2;
+}
+
+message AppserverAppIotMainCardRecord {
+    google.protobuf.StringValue iotDeviceTyp = 1;
+}
+
+message AppserverAppIotQuickButtonRecord {
+    google.protobuf.StringValue iotDeviceTyp = 1;
+}
+
+message AppserverBotDmaDeleteVoiceNotes {
+    google.protobuf.StringValue noteId = 1;
+}
+
+message AppserverBotDmaGetVoiceNotesByNoteId {
+    google.protobuf.StringValue noteId = 1;
+}
+
+message AppserverBotDmaStoreVoiceNotes {
+    google.protobuf.StringValue noteId = 1;
+    google.protobuf.StringValue pcmUrl = 2;
+    google.protobuf.StringValue asrResUrl = 3;
+    google.protobuf.StringValue noteTitle = 4;
+    google.protobuf.Int64Value noteCreateTime = 5;
+    google.protobuf.UInt32Value pcmDuration = 6;
+    google.protobuf.StringValue notePreview = 7;
+}
+
+message AppserverBotDmaUpdateVoiceNotesByNoteId {
+    google.protobuf.StringValue noteId = 1;
+    google.protobuf.StringValue noteTitle = 2;
+    google.protobuf.Int64Value noteModifyTime = 3;
+    google.protobuf.StringValue notePreview = 4;
+}
+
+message AppserverBotDmaVoiceNotesList {
+    google.protobuf.UInt32Value page = 1;
+    google.protobuf.UInt32Value pageSize = 2;
+}
+
+message AppserverDmaDeviceConnectFailed {
+    google.protobuf.StringValue errorCode = 1;
+    google.protobuf.StringValue errorMsg = 2;
+    google.protobuf.BoolValue isFirst = 3;
+    google.protobuf.StringValue connectionState = 4;
+    google.protobuf.StringValue name = 5;
+}
+
+message AppserverDmaDeviceConnectStarted {
+    google.protobuf.BoolValue isFirst = 1;
+    google.protobuf.StringValue name = 2;
+}
+
+message AppserverDmaDeviceConnectSucceeded {
+    google.protobuf.BoolValue isFirst = 1;
+    google.protobuf.StringValue mac = 2;
+}
+
+message AppserverDmaDeviceDisconnected {
+    google.protobuf.StringValue errorCode = 1;
+    google.protobuf.StringValue errorMsg = 2;
+    google.protobuf.StringValue name = 3;
+}
+
+message AppserverDmaHomeTabDisplayed {
+    google.protobuf.StringValue tabName = 1;
+    google.protobuf.BoolValue connected = 2;
+}
+
+message AppserverDmaHomeTabPageDisplayed {
+    google.protobuf.BoolValue connected = 1;
+    google.protobuf.UInt32Value duration = 2;
+    google.protobuf.UInt32Value tabId = 3;
+}
+
+message AppserverDmaMainTabPageDisplayed {
+    google.protobuf.UInt32Value duration = 1;
+}
+
+message AppserverDmaMoreSettingClicked {
+    google.protobuf.BoolValue connected = 1;
+}
+
+message AppserverDmaOtaPageDisplayed {
+    google.protobuf.StringValue from = 1;
+}
+
+message AppserverDmaOtaStatusChanged {
+    google.protobuf.StringValue event = 1;
+    google.protobuf.StringValue fromVersion = 2;
+    google.protobuf.StringValue toVersion = 3;
+    google.protobuf.StringValue model = 4;
+    google.protobuf.StringValue result = 5;
+}
+
+message AppserverDmaTapSettingClicked {
+    google.protobuf.BoolValue connected = 1;
+}
+
+message AppserverDmaTapSettingRecorded {
+    google.protobuf.StringValue type = 1;
+    google.protobuf.StringValue left = 2;
+    google.protobuf.StringValue right = 3;
+}
+
+message AppserverGatewayTestRegSub {
+    google.protobuf.StringValue test = 1[json_name="@required"];
+}
+
+message AppserverSetInterConnDefaultDeviceId {
+    google.protobuf.StringValue deviceId = 1;
+}
+
+message AppserverTwsLocalTtsStateChanged {
+    google.protobuf.StringValue type = 1;
+}
+
+message AppserverTwsLocalWakeupDialogClicked {
+    google.protobuf.StringValue type = 1;
+}
+
+message AppserverTwsLocalWakeupStateChanged {
+    google.protobuf.StringValue type = 1;
+}
+
+message AppserverTwsLocalWakeupStateUploaded {
+    google.protobuf.StringValue type = 1;
+}
+
+message AppserverTwsTransEarHabitAuditioned {
+    google.protobuf.StringValue habitType = 1;
+}
+
+message AppserverTwsTransEarHabitSaved {
+    google.protobuf.StringValue habitType = 1;
+}
+
+message AppserverTwsTransGuideHintClicked {
+    google.protobuf.StringValue type = 1;
+    google.protobuf.StringValue mode = 2;
+    google.protobuf.UInt32Value number = 3;
+}
+
+message AppserverTwsTransGuideStartClicked {
+    google.protobuf.StringValue type = 1;
+}
+
+message AppserverTwsTransHistoryCopyed {
+    google.protobuf.StringValue transMode = 1;
+}
+
+message AppserverTwsTransTranslationClearScreenClicked {
+    google.protobuf.StringValue type = 1;
+}
+
+message AppserverTwsTransTranslationDisplayed {
+    google.protobuf.StringValue type = 1;
+}
+
+message AppserverTwsTransTranslationDurationRecorded {
+    google.protobuf.StringValue type = 1;
+    google.protobuf.StringValue mode = 2;
+    google.protobuf.UInt64Value duration = 3;
+    google.protobuf.Int32Value count = 4;
+}
+
+message AppserverTwsTransTranslationDurationUsed {
+    google.protobuf.StringValue type = 1;
+    google.protobuf.UInt64Value duration = 2;
+}
+
+message AppserverTwsTransTranslationMuteClicked {
+    google.protobuf.StringValue type = 1;
+    google.protobuf.BoolValue isMuted = 2;
+}
+
+message AppserverTwsTransTranslationStartClicked {
+    google.protobuf.StringValue type = 1;
+    google.protobuf.StringValue mode = 2;
+}
+
+message AppserverTwsTransViewHistory {
+    google.protobuf.StringValue transMode = 1;
+}
+
+message AuthorityRuleStruct {
+    google.protobuf.StringValue authName = 1;
+    google.protobuf.BoolValue authValue = 2;
+}
+
+message BotDmaXimalayaLiveIndex {
+    google.protobuf.UInt64Value liveCategoryId = 1;
+    google.protobuf.UInt32Value page = 2;
+    google.protobuf.UInt32Value pageSize = 3;
+}
+
+message BotDmaXimalayaLiveVerifyEncryptedDumiId {
+    google.protobuf.StringValue EncryptedDumiId = 1;
+}
+
+message CdrnotifierNotifyMissedCall {
+    google.protobuf.StringValue callType = 1;
+    google.protobuf.StringValue callerUri = 2;
+    google.protobuf.StringValue calleeUri = 3;
+    google.protobuf.UInt32Value reason = 4;
+    google.protobuf.UInt64Value missTime = 5;
+}
+
+message CircleMemberStruct {
+    google.protobuf.UInt64Value id = 1;
+    google.protobuf.StringValue type = 2;
+}
+
+message CircleReaderGetCircleInfo {
+    google.protobuf.UInt64Value dumiUserDeviceId = 1;
+    google.protobuf.UInt64Value userDeviceId = 2;
+}
+
+message CircleReaderGetCircleMember {
+    google.protobuf.UInt64Value circleId = 1;
+    google.protobuf.StringValue circleNumber = 2;
+    google.protobuf.StringValue msgId = 3;
+}
+
+message CircleReaderGetCircleMemberInfo {
+    google.protobuf.UInt64Value circleId = 1;
+}
+
+message CircleReaderGetCircleMemberList {
+    google.protobuf.UInt64Value circleId = 1;
+}
+
+message CircleReaderGetCircleNumberInfo {
+    google.protobuf.StringValue circleNumber = 1;
+}
+
+message CircleReaderGetCircleVoiceUser {
+    google.protobuf.UInt64Value circleId = 1;
+    google.protobuf.StringValue dumiProfileId = 2;
+    google.protobuf.UInt64Value dumiId = 3;
+}
+
+message CircleReaderGetContactList {
+    google.protobuf.UInt64Value circleId = 1;
+}
+
+message CircleReaderGetMemberDeviceList {
+    google.protobuf.UInt64Value userId = 1;
+}
+
+message CircleReaderGetUnusedCircleList {
+    google.protobuf.UInt64Value dumiId = 1;
+    google.protobuf.UInt64Value userDeviceId = 2;
+    google.protobuf.StringValue circleType = 3;
+    google.protobuf.StringValue clientId = 4;
+    google.protobuf.StringValue cuid = 5;
+}
+
+message CircleWriterAddCircle {
+    google.protobuf.UInt64Value dumiId = 1;
+    google.protobuf.StringValue circleType = 2;
+    google.protobuf.UInt64Value userDeviceId = 3;
+    google.protobuf.StringValue clientId = 4;
+    google.protobuf.StringValue cuid = 5;
+}
+
+message CircleWriterAddContactPerson {
+    google.protobuf.UInt64Value circleId = 1;
+    google.protobuf.StringValue displayName = 2;
+    google.protobuf.StringValue cellPhone = 3;
+    google.protobuf.StringValue countryCode = 4;
+}
+
+message CircleWriterApplyAuthority {
+    google.protobuf.UInt64Value circleId = 1;
+    google.protobuf.UInt64Value dumiId = 2;
+    repeated AuthorityRuleStruct authorityRules = 3;
+}
+
+message CircleWriterAutoBindCircle {
+    google.protobuf.StringValue circleType = 1;
+    google.protobuf.UInt64Value userDeviceId = 2;
+}
+
+message CircleWriterBindCircle {
+    google.protobuf.UInt64Value circleId = 1;
+    google.protobuf.UInt64Value userId = 2;
+    google.protobuf.UInt64Value dumiId = 3;
+    google.protobuf.StringValue circleType = 4;
+    google.protobuf.UInt64Value userDeviceId = 5;
+    google.protobuf.StringValue clientId = 6;
+    google.protobuf.StringValue cuid = 7;
+}
+
+message CircleWriterChangeAuthority {
+    google.protobuf.UInt64Value circleId = 1;
+    google.protobuf.UInt64Value memberId = 2;
+    google.protobuf.StringValue type = 3;
+    repeated AuthorityRuleStruct authorityRules = 4;
+    google.protobuf.StringValue reqMsgId = 5;
+}
+
+message CircleWriterChangeDeviceInfo {
+    google.protobuf.UInt64Value deviceId = 1;
+    google.protobuf.StringValue displayName = 2;
+    google.protobuf.StringValue avatar = 3;
+}
+
+message CircleWriterConnectOrJoinCircleAccept {
+    google.protobuf.StringValue message = 1;
+    google.protobuf.StringValue msgId = 2;
+    repeated AuthorityRuleStruct authorityRules = 3;
+}
+
+message CircleWriterConnectOrJoinCircleReject {
+    google.protobuf.StringValue msgId = 1;
+}
+
+message CircleWriterConnectOrJoinCircleReq {
+    google.protobuf.StringValue message = 1;
+    google.protobuf.StringValue requestType = 2;
+    google.protobuf.StringValue targetCircleNumber = 3;
+    repeated AuthorityRuleStruct authorityRules = 4;
+    google.protobuf.UInt64Value requesterId = 5;
+}
+
+message CircleWriterDelContactMember {
+    google.protobuf.UInt64Value circleId = 1;
+    repeated google.protobuf.UInt64Value ids = 2;
+}
+
+message CircleWriterDelMemberOrExitCircle {
+    google.protobuf.UInt64Value circleId = 1;
+    google.protobuf.UInt64Value memberId = 2;
+    google.protobuf.StringValue type = 3;
+}
+
+message CircleWriterDeleteMembers {
+    google.protobuf.UInt64Value circleId = 1;
+    repeated CircleMemberStruct members = 2;
+}
+
+message CircleWriterEditCircleMemberName {
+    google.protobuf.UInt64Value circleId = 1;
+    google.protobuf.UInt64Value memberId = 2;
+    google.protobuf.StringValue type = 3;
+    google.protobuf.StringValue name = 4;
+}
+
+message CircleWriterEditContactMemberName {
+    google.protobuf.UInt64Value circleId = 1;
+    google.protobuf.StringValue name = 2;
+    google.protobuf.StringValue phone = 3;
+    google.protobuf.StringValue countryCode = 4;
+}
+
+message CircleWriterFriendInvite {
+    google.protobuf.StringValue identifier = 1;
+    google.protobuf.UInt64Value circleId = 2;
+    repeated AuthorityRuleStruct authorityRules = 3;
+}
+
+message CircleWriterGetMsgInfo {
+    google.protobuf.StringValue msgId = 1;
+    google.protobuf.StringValue type = 2;
+}
+
+message CircleWriterInviteUser {
+    google.protobuf.StringValue message = 1;
+    google.protobuf.UInt64Value circleId = 2;
+    repeated AuthorityRuleStruct authorityRules = 3;
+    google.protobuf.UInt64Value invitee = 4;
+}
+
+message CircleWriterUserAgreeJoinCircle {
+    google.protobuf.StringValue msgId = 1;
+    google.protobuf.UInt64Value inviter = 2;
+}
+
+message CircleWriterUserRejectJoinCircle {
+    google.protobuf.StringValue msgId = 1;
+}
+
+message CircleWriterVoicePrintCreateUser {
+    google.protobuf.UInt64Value circleId = 1;
+    google.protobuf.UInt64Value dumiId = 2;
+    VoicePrintStructure userInfo = 3;
+}
+
+message CircleWriterVoicePrintDelUser {
+    google.protobuf.UInt64Value circleId = 1;
+    google.protobuf.StringValue dumiProfileId = 2;
+    google.protobuf.UInt64Value dumiId = 3;
+}
+
+message CircleWriterVoicePrintUpdateUserInfo {
+    google.protobuf.UInt64Value circleId = 1;
+    google.protobuf.StringValue dumiProfileId = 2;
+    google.protobuf.UInt64Value dumiId = 3;
+    VoicePrintStructure userInfo = 4;
+}
+
+message CircleWriterVoicePrintWXUnBind {
+    google.protobuf.UInt64Value circleId = 1;
+    google.protobuf.StringValue dumiProfileId = 2;
+    google.protobuf.UInt64Value dumiId = 3;
+}
+
+message CommentBaseAddreply {
+    google.protobuf.StringValue source_type = 1;
+    google.protobuf.StringValue source_token = 2;
+    google.protobuf.StringValue content = 3;
+    google.protobuf.StringValue parent_id = 4;
+    google.protobuf.StringValue source_level = 5;
+    google.protobuf.StringValue source_title = 6;
+    google.protobuf.StringValue ext = 7;
+}
+
+message CommentBaseDelreply {
+    google.protobuf.StringValue source_type = 1;
+    google.protobuf.StringValue source_token = 2;
+    google.protobuf.StringValue reply_id = 3;
+    google.protobuf.StringValue source_level = 4;
+}
+
+message CommentBaseGetlist {
+    google.protobuf.StringValue source_type = 1;
+    google.protobuf.StringValue source_token = 2;
+    google.protobuf.StringValue reply_id = 3;
+    google.protobuf.Int32Value order = 4;
+    google.protobuf.Int32Value use_list = 5;
+    google.protobuf.Int32Value type = 6;
+    google.protobuf.StringValue out_reply_id = 7;
+    google.protobuf.Int32Value start = 8;
+    google.protobuf.Int32Value num = 9;
+    google.protobuf.StringValue source_level = 10;
+}
+
+message CommentBaseGetmeta {
+    repeated CommentBaseGetmetaItemKeys item_keys = 1;
+}
+
+message CommentBaseGetmetaItemKeys {
+    google.protobuf.StringValue source_type = 1;
+    google.protobuf.StringValue source_token = 2;
+    google.protobuf.StringValue reply_id = 3;
+    google.protobuf.StringValue source_level = 4;
+}
+
+message CommentBaseReplycount {
+    repeated google.protobuf.StringValue item_keys = 1;
+}
+
+message CommentBaseTcount {
+    google.protobuf.StringValue source_type = 1;
+    google.protobuf.StringValue source_token = 2;
+    google.protobuf.StringValue source_level = 3;
+}
+
+message CommentBaseUpdown {
+    google.protobuf.StringValue source_type = 1;
+    google.protobuf.StringValue source_token = 2;
+    google.protobuf.StringValue reply_id = 3;
+    google.protobuf.Int32Value type = 4;
+    google.protobuf.Int32Value undo_type = 5;
+    google.protobuf.StringValue source = 6;
+    google.protobuf.StringValue extdata = 7;
+    google.protobuf.StringValue source_level = 8;
+}
+
+message CommentClicked {
+    google.protobuf.StringValue eventPage = 1;
+    google.protobuf.StringValue eventType = 2;
+    google.protobuf.StringValue eventTarget = 3;
+    google.protobuf.StringValue sourceType = 4;
+    google.protobuf.StringValue sourceToken = 5;
+    google.protobuf.StringValue sourceLevel = 6;
+    google.protobuf.StringValue sourceFrom = 7;
+}
+
+message ConfigGetDuerConfig {
+    google.protobuf.StringValue userId = 1;
+    google.protobuf.StringValue model = 2;
+    repeated ConfigGetDuerConfigConfig config = 3;
+}
+
+message ConfigGetDuerConfigConfig {
+    google.protobuf.StringValue id = 1;
+    google.protobuf.StringValue idType = 2;
+    google.protobuf.UInt64Value version = 3;
+}
+
+message ExtTimerSaveMsgBoxSetting {
+    repeated ExtTimerSaveMsgBoxSettingNoticeOption noticeOption = 1;
+    ExtTimerSaveMsgBoxSettingTriggerPlay triggerPlay = 2;
+}
+
+message ExtTimerSaveMsgBoxSettingNoticeOption {
+    google.protobuf.StringValue type = 1;
+    google.protobuf.StringValue desc = 2;
+    google.protobuf.BoolValue status = 3;
+}
+
+message ExtTimerSaveMsgBoxSettingTriggerPlay {
+    google.protobuf.BoolValue status = 1;
+    google.protobuf.StringValue time = 2;
+}
+
+message GetListCarouselBannerClick {
+    google.protobuf.StringValue url = 1;
+    google.protobuf.StringValue tabName = 2;
+    google.protobuf.StringValue cardId = 3;
+    google.protobuf.StringValue cardTitle = 4;
+}
+
+message GetListGoHomeAndSeeLinkSucceeded {
+    google.protobuf.StringValue version = 1;
+    google.protobuf.StringValue trigger = 2;
+}
+
+message GetListGoHomeAndSeeStartLink {
+    google.protobuf.StringValue version = 1;
+    google.protobuf.StringValue trigger = 2;
+}
+
+message GetListGoHomeAndSeeStartVideoCall {
+    google.protobuf.StringValue version = 1;
+    google.protobuf.StringValue trigger = 2;
+}
+
+message GetListSingleRowClick {
+    google.protobuf.StringValue position = 1;
+    google.protobuf.StringValue url = 2;
+    google.protobuf.StringValue tabName = 3;
+    google.protobuf.StringValue cardId = 4;
+    google.protobuf.StringValue cardTitle = 5;
+}
+
+message GetListSmartCaptureClick {
+    google.protobuf.StringValue version = 1;
+    google.protobuf.StringValue trigger = 2;
+}
+
+message GetListSmartCaptureClickPreview {
+    google.protobuf.StringValue version = 1;
+    google.protobuf.StringValue trigger = 2;
+}
+
+message MessagePushAck {
+    google.protobuf.StringValue eventType = 1;
+    google.protobuf.Int32Value pushOpenType = 2;
+    google.protobuf.StringValue pushOrigin = 3;
+    google.protobuf.StringValue pushMessageId = 4;
+}
+
+message NemoVideoCallIncommingCallPagePop {
+    google.protobuf.BoolValue actionResult = 1;
+    google.protobuf.StringValue manufacturer = 2;
+    google.protobuf.StringValue brand = 3;
+    google.protobuf.StringValue model = 4;
+    google.protobuf.StringValue systemVersion = 5;
+    google.protobuf.StringValue androidVersion = 6;
+    google.protobuf.StringValue appVersion = 7;
+    google.protobuf.Int32Value status = 8;
+}
+
+message NewGetWorker {
+    google.protobuf.StringValue deviceType = 1;
+    google.protobuf.UInt64Value userId = 2;
+    google.protobuf.StringValue isx5 = 3;
+}
+
+message PetGameApiFeedHelpFeed {
+    google.protobuf.StringValue master_name = 1;
+    google.protobuf.StringValue pet_name = 2;
+}
+
+message PetGameApiPetAdoptPet {
+    google.protobuf.StringValue master_name = 1;
+    google.protobuf.StringValue pet_name = 2;
+}
+
+message PetGameApiPropUseProp {
+    google.protobuf.StringValue card_key = 1;
+    google.protobuf.StringValue master_name = 2;
+    google.protobuf.StringValue pet_name = 3;
+}
+
+message PetGameApiShopConvertGood {
+    google.protobuf.StringValue goods_id = 1;
+}
+
+message PetGameApiShopGetConvertLog {
+    google.protobuf.StringValue last_t = 1;
+}
+
+message PetGameApiSuitSaveSuit {
+    google.protobuf.StringValue suit_id = 1;
+}
+
+message PetGameApiTaskFinishBrowseTask {
+    google.protobuf.StringValue unique_key = 1;
+}
+
+message PetGameApiTaskGetAward {
+    google.protobuf.StringValue unique_key = 1;
+}
+
+message PetGameApiTaskSignIn {
+    google.protobuf.StringValue unique_key = 1;
+}
+
+message PetGameApiUserGetDynamic {
+    google.protobuf.StringValue page = 1;
+    google.protobuf.StringValue page_size = 2;
+}
+
+message PetGameApiUserSetMessage {
+    google.protobuf.StringValue feed_remind = 1;
+    google.protobuf.StringValue food_steal_remind = 2;
+    google.protobuf.StringValue finish_facility_task_remind = 3;
+}
+
+message PetGameApiUserUpMasterName {
+    google.protobuf.StringValue master_name = 1;
+}
+
+message PetGameApiUserUpPetName {
+    google.protobuf.StringValue pet_name = 1;
+}
+
+message PetGameApiUserUpTipStatus {
+    google.protobuf.StringValue status_key = 1;
+    google.protobuf.Int32Value status_value = 2;
+}
+
+message PetGameFeed {
+    google.protobuf.Int32Value is_guide = 1;
+}
+
+message PetGameSavingDressUpClick {
+    google.protobuf.StringValue status = 1;
+}
+
+message PetGameUnlockDressUpClick {
+    google.protobuf.StringValue action = 1;
+}
+
+message PetGameWelfareMallItemClick {
+    google.protobuf.StringValue goodsId = 1;
+    google.protobuf.StringValue goodsName = 2;
+}
+
+message PstnGetCertifyPstnInfo {
+    google.protobuf.StringValue uid = 1;
+}
+
+message PstnGetMPTYInfo {
+    google.protobuf.StringValue callerUid = 1;
+    google.protobuf.StringValue calleeUid = 2;
+}
+
+message PstnGetPstnInfo {
+    google.protobuf.StringValue uid = 1;
+}
+
+message RtcChatRoomAccountApiV1AccountSigninApp {
+    google.protobuf.StringValue appId = 1;
+    google.protobuf.StringValue deviceId = 2;
+}
+
+message RtcChatRoomAccountApiV1AccountSigninShow {
+    google.protobuf.StringValue appId = 1;
+    google.protobuf.StringValue xiaoduId = 2;
+    google.protobuf.StringValue userDeviceId = 3;
+    google.protobuf.Int32Value mode = 4;
+}
+
+message RtcChatRoomAccountApiV1AccountVip {
+    google.protobuf.StringValue appId = 1;
+    google.protobuf.StringValue token = 2;
+}
+
+message VipsrvCheckCmccVipNewDuershow {
+    google.protobuf.StringValue nemoSn = 1;
+    google.protobuf.StringValue softVersion = 2;
+    google.protobuf.Int64Value dumiUserDeviceId = 3;
+}
+
+message VoicePrintStructure {
+    google.protobuf.StringValue birthday = 1;
+    repeated google.protobuf.StringValue music_language = 2;
+    repeated google.protobuf.StringValue music_type = 3;
+    repeated google.protobuf.StringValue music_singer = 4;
+    google.protobuf.StringValue nickname = 5;
+    google.protobuf.StringValue avatar = 6;
+    google.protobuf.StringValue family_role = 7;
+    google.protobuf.UInt64Value voiceprint_switch = 8;
+    google.protobuf.StringValue gender = 9;
+}
+
+message ConfigWriterUpdateDuerConfig {
+    google.protobuf.UInt64Value userDeviceId = 1;
+    repeated ConfigWriteUpdateDuerConfigItem duerConfig = 2 [json_name="@oneofmap-dynamicFields"];
+    google.protobuf.UInt64Value circleId = 3;
+}
+
+message ConfigWriteUpdateDuerConfigItem {
+    google.protobuf.StringValue name = 1;
+    oneof dynamic_oneof {
+        ConfigWriteUpdateDuerConfigString displayName = 11;
+        ConfigWriteUpdateDuerConfigBoolean enableWatchRing = 12;
+        ConfigWriteUpdateDuerConfigBoolean allowStranger = 13;
+        ConfigWriteUpdateDuerConfigString payUrl = 14;
+        ConfigWriteUpdateDuerConfigBoolean autoAnswer = 15;
+        ConfigWriteUpdateDuerConfigString timeAndCity = 16;
+        ConfigWriteUpdateDuerConfigString netTestServer = 17;
+        ConfigWriteUpdateDuerConfigBoolean enableIce = 18;
+        ConfigWriteUpdateDuerConfigBoolean enableMultiPart720p = 19;
+        ConfigWriteUpdateDuerConfigBoolean enableOpus = 20;
+        ConfigWriteUpdateDuerConfigBoolean flowControl = 21;
+    }
+}
+
+message ConfigWriteUpdateDuerConfigString {
+    google.protobuf.StringValue value = 1;
+}
+
+message ConfigWriteUpdateDuerConfigBoolean {
+    google.protobuf.BoolValue value = 1;
+}
+
